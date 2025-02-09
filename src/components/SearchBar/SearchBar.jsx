@@ -3,8 +3,8 @@ import css from './SearchBar.module.css';
 import { ImSearch } from 'react-icons/im';
 import { IoMdClose } from 'react-icons/io';
 
-const SearchBar = ({ onSubmit }) => {
-  const [typingQuery, setTypingQuery] = useState('');
+const SearchBar = ({ onSubmit, query }) => {
+  const [typingQuery, setTypingQuery] = useState(query ?? '');
   const handleChange = e => {
     // console.log('handleChange is called...');
     setTypingQuery(e.target.value);

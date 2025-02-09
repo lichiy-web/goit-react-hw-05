@@ -5,7 +5,7 @@ const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
 };
 
-const MovieDetailsNavigation = () => {
+const MovieDetailsNavigation = ({ state }) => {
   return (
     <ul className={css.MovieDetailsNavigation}>
       <li>

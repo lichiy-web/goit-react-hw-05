@@ -1,6 +1,6 @@
 import css from './MovieDetailsPage.module.css';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getImgUrl, getMovieDetails } from '../../services/api';
 import MovieDetailsNavigation from '../../components/MovieDetailsNavigation/MovieDetailsNavigation';
 import Loader from '../../components/Loader/Loader';
@@ -12,9 +12,10 @@ const MovieDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
   const location = useLocation();
-  const goBackUrl = location.state ?? '/movies';
+  const goBackUrl = useRef(location.state ?? '/movies');
 
   useEffect(() => {
+    setIsLoading(true);
     getMovieDetails(movieId)
       .then(({ data }) => {
         console.log(data);
@@ -23,6 +24,9 @@ const MovieDetailsPage = () => {
       .catch(e => {
         console.error(e);
         setIsError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [movieId]);
 
@@ -42,10 +46,10 @@ const MovieDetailsPage = () => {
     production_companies,
   } = movie ?? {};
   let def; // for default in the function parameters
-  if (!movie) return <div>Loading...</div>;
+  if (!movie) return <Loader isLoading={isLoading} strokeColor="#000000" />;
   return (
     <div className={css.movieDetails}>
-      <Link to={goBackUrl}>Go back</Link>
+      <Link to={goBackUrl.current}>Go back</Link>
       <h1 className={css.movieTitle}>{title}</h1>
       <img
         className={css.moviePoster}

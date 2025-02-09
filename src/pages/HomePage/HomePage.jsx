@@ -6,6 +6,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Loader from '../../components/Loader/Loader';
 // import MoviesPage from '../MoviesPage/MoviesPage';
 import { useLocation } from 'react-router-dom';
+import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
 
 const firstPage = 1;
 
@@ -16,6 +17,11 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const location = useLocation();
+
+  const handleLoadMore = () => {
+    setIsError(false);
+    setPage(prev => prev + 1);
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -37,11 +43,14 @@ const HomePage = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [page]);
   return (
     <div>
       <h1>Home Page</h1>
       <MovieList movies={movies} state={location} />
+      {!!movies.length && !isLastPage && (
+        <LoadMoreBtn onLoadMore={handleLoadMore} isLoading={isLoading} />
+      )}
       <Loader isLoading={isLoading} strokeColor="#000000" />
       {isError && <ErrorMessage />}
     </div>
