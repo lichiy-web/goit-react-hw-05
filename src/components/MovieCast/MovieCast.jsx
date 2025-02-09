@@ -5,15 +5,6 @@ const MovieCast = () => {
   return (
     <div>
       <h1>Movie cast</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/movie"></Link>
-          </li>
-          <li></li>
-        </ul>
-      </nav>
-      <Outlet />
     </div>
   );
 };

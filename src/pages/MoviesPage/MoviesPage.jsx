@@ -1,7 +1,8 @@
 import css from './MoviesPage.module.css';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 const MoviesPage = () => {
+  const location = useLocation();
   return (
     <>
       <h1>Movies Page</h1>

@@ -1,13 +1,16 @@
 import css from './MovieDetailsPage.module.css';
-import { useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getImgUrl, getMovieDetails } from '../../services/api';
+import MovieDetailsNavigation from '../../components/MovieDetailsNavigation/MovieDetailsNavigation';
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
+  const location = useLocation();
+  const goBackUrl = location.state ?? '/movies';
 
   useEffect(() => {
     getMovieDetails(movieId)
@@ -40,6 +43,7 @@ const MovieDetailsPage = () => {
   if (!movie) return <div>Loading...</div>;
   return (
     <div className={css.movieDetails}>
+      <Link to={goBackUrl}>Go back</Link>
       <h1 className={css.movieTitle}>{title}</h1>
       <img
         className={css.moviePoster}
@@ -61,7 +65,11 @@ const MovieDetailsPage = () => {
         })}
       </ul>
       <p className={css.durationItem}>Duration: {runtime} min</p>
+      <hr />
       <p className={css.movieOverview}>{overview}</p>
+      <hr />
+      <MovieDetailsNavigation />
+      <Outlet />
     </div>
   );
 };
