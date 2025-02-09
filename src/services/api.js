@@ -4,7 +4,7 @@ import { api_read_access_token } from './api_access';
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 
-const IMG_BASE_URL = 'http://image.tmdb.org/t/p/';
+const IMG_BASE_URL = 'https://image.tmdb.org/t/p/';
 const sizes = {
     poster: {
         xs: "w92",
