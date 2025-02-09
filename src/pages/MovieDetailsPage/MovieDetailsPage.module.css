@@ -28,17 +28,26 @@
 }
 
 .posterItem {
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    max-width:30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.moviePoster {
+    /* width: 25%; */
 }
 
 .infoItem {
-    width: 100%;
-    flex-grow: 9;
+    width: 70%;
+    /* flex-grow: 9; */
     display: flex;
     flex-direction: column;    
 }
 
 .infoRow {
+    width:   100%;
     display: flex;    
 }
 

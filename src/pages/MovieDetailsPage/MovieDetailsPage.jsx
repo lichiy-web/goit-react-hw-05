@@ -12,6 +12,7 @@ import MovieDetailsNavigation from '../../components/MovieDetailsNavigation/Movi
 import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { PiArrowCircleLeftDuotone } from 'react-icons/pi';
+import posterFallback from '../../assets/img/poster-fallback_01.png';
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
@@ -69,7 +70,9 @@ const MovieDetailsPage = () => {
         <div className={css.posterItem}>
           <img
             className={css.moviePoster}
-            src={getImgUrl(poster_path, def, 'l')}
+            src={
+              !!poster_path ? getImgUrl(poster_path, def, 'l') : posterFallback
+            }
             alt={title}
           />
         </div>
