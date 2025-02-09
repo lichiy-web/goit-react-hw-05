@@ -1,0 +1,9 @@
+.loadMoreBtn {
+    margin-bottom: 1em;
+    box-shadow: 0 0 1em #d5d5d5;
+}
+
+.loadMoreBtn:focus {
+    outline: 0;
+}
+

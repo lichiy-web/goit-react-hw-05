@@ -23,7 +23,7 @@ const sizes = {
     }
 }
 
-export const getImgUrl = (imgName, type = 'poster', size = 'raw') => {
+export const getImgUrl = (imgName, type = 'poster' /* poster || backdrop */ , size = 'raw') => {
     if (!sizes[type] || !sizes[type][size]) throw new Error('Incorrect image type or size.');
     return IMG_BASE_URL + sizes[type][size] + `/${imgName}`;
 }

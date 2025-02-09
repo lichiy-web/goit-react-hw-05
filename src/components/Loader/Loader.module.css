@@ -1,0 +1,6 @@
+.loader {
+    width: 5em;
+    /* height: 2em; */
+    position: fixed;
+    top: calc(50vh - .5em);
+}

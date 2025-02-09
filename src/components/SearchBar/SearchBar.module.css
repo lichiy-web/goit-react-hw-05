@@ -1,0 +1,82 @@
+.searchBar {
+    width: 100%;
+    background-image: url('../../assets/img/banner-starSpace-big.jpg');
+    /* background-position: 10px; */
+    display: flex;
+    place-content: center;
+    position: sticky;
+    top: 0;
+    padding: 0.5em 0;
+    box-sizing: border-box;
+    animation: headerBackground 10s infinite alternate;
+}
+
+@keyframes headerBackground { 
+    from {background-position-y: 0%}
+    to {background-position-y: 100%}
+    
+}
+
+
+.searchBox {
+    display: flex;
+    /* gap:0.2em;   */
+    width: 40%;
+    background-color: #ffffff;   
+    border-radius: 5px; 
+    overflow: hidden;  
+}
+
+.searchBox:focus,
+.searchBox:focus-within {
+    outline: 2px solid var(--btn-scroll-dark);
+}
+
+.searchInput {
+    /* width: max-content; */
+    border: 0;
+    padding: 0.2em .5em;
+    flex-grow: 9;
+}
+
+.searchInput:focus {
+    outline: 0;    
+}
+.searchInputGroup {
+    display: flex;
+    flex-grow: 9;
+}
+.resetBtn {
+    flex-grow: 1;
+    /* width: min-content; */
+    max-width: 1.5em;
+    padding: 0;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 0;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBtn {
+    flex-grow: 1;
+    /* width: min-content; */
+    max-width: 2em;
+    padding: 0;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 0;
+    /* outline: 0; */
+}
+
+.resetBtn:focus,
+.searchBtn:focus {
+    outline: 0;
+}
+
+.searchIcon {
+    display: flex;
+    place-content: center;
+}

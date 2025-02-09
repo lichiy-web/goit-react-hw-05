@@ -1,15 +1,33 @@
 import css from './HomePage.module.css';
 import { useState, useEffect } from 'react';
 import { getTrendingMovies } from '../../services/api';
+import MovieList from '../../components/MovieList/MovieList';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import MoviesPage from '../MoviesPage/MoviesPage';
+
+const firstPage = 1;
 
 const HomePage = () => {
+  const [page, setPage] = useState(firstPage);
+  const [movies, setMovies] = useState([]);
+  const [isLastPage, setIsLastPage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isStrictModeFirstMounting, setIsStrictModeFirstMounting] =
+    useState(true);
+
   useEffect(() => {
-    getTrendingMovies()
+    setIsLoading(true);
+    setIsError(false);
+    getTrendingMovies('day', page)
       .then(({ data }) => {
-        setIsLoading(true);
-        console.log(data);
+        const { results, total_pages } = data;
+        if (page === total_pages) {
+          setIsLastPage(true);
+        }
+        // console.log('movies =>', movies);
+
+        setMovies(prev => [...prev, ...results]);
       })
       .catch(e => {
         console.error(e);
@@ -22,6 +40,8 @@ const HomePage = () => {
   return (
     <div>
       <h1>Home Page</h1>
+      <MovieList movies={movies} />
+      {isError && <ErrorMessage />}
     </div>
   );
 };
