@@ -1,5 +1,11 @@
 import css from './MovieDetailsPage.module.css';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { getImgUrl, getMovieDetails } from '../../services/api';
 import MovieDetailsNavigation from '../../components/MovieDetailsNavigation/MovieDetailsNavigation';
@@ -13,6 +19,7 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const goBackUrl = useRef(location.state ?? '/movies');
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -23,6 +30,9 @@ const MovieDetailsPage = () => {
       })
       .catch(e => {
         console.error(e);
+        if (e.status === 404) {
+          navigate('/404', { replace: true });
+        }
         setIsError(true);
       })
       .finally(() => {

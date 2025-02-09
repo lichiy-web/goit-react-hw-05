@@ -5,7 +5,7 @@ import MovieList from '../../components/MovieList/MovieList';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Loader from '../../components/Loader/Loader';
 // import MoviesPage from '../MoviesPage/MoviesPage';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
 
 const firstPage = 1;
@@ -17,7 +17,7 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const location = useLocation();
-
+  const navigate = useNavigate();
   const handleLoadMore = () => {
     setIsError(false);
     setPage(prev => prev + 1);
@@ -38,6 +38,9 @@ const HomePage = () => {
       })
       .catch(e => {
         console.error(e);
+        if (e.status === 404) {
+          navigate('/404', { replace: true });
+        }
         setIsError(true);
       })
       .finally(() => {

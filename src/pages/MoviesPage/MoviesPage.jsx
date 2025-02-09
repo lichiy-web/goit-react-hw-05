@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import css from './MoviesPage.module.css';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import { searchMovies } from '../../services/api';
@@ -18,13 +18,14 @@ const MoviesPage = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(firstPage);
-
+  const navigate = useNavigate();
   // const [perPage, setPerPage] = useState(defaultPerPage);
   const [query, setQuery] = useState(searchParams.get('query'));
   const [isEmpty, setIsEmpty] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isLastPage, setIsLastPage] = useState(false);
+
   // const [modalIsOpen, setModalIsOpen] = useState(false);
   // const [currentImageItem, setCurrentImageItem] = useState({});
 
@@ -80,6 +81,9 @@ const MoviesPage = () => {
       })
       .catch(err => {
         console.error(err);
+        if (e.status === '404') {
+          navigate('/404', { replace: true });
+        }
         setIsError(true);
       })
       .finally(() => {
