@@ -7,7 +7,7 @@ const buildLinkClass = ({ isActive }) => {
 
 const MovieDetailsNavigation = ({ state }) => {
   return (
-    <ul className={css.MovieDetailsNavigation}>
+    <ul className={css.movieDetailsNavigation}>
       <li>
         <NavLink className={buildLinkClass} to="cast">
           Cast

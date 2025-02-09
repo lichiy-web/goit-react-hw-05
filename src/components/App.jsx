@@ -18,7 +18,7 @@ function App() {
     <div className="main-container">
       <Navigation />
 
-      <Suspense fallback={<Loader isLoading={true} strokeColor="#000000" />}>
+      <Suspense fallback={<Loader isLoading={true} />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />

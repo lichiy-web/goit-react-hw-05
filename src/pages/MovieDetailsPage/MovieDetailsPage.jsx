@@ -11,6 +11,7 @@ import { getImgUrl, getMovieDetails } from '../../services/api';
 import MovieDetailsNavigation from '../../components/MovieDetailsNavigation/MovieDetailsNavigation';
 import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import { PiArrowCircleLeftDuotone } from 'react-icons/pi';
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
@@ -56,37 +57,48 @@ const MovieDetailsPage = () => {
     production_companies,
   } = movie ?? {};
   let def; // for default in the function parameters
-  if (!movie) return <Loader isLoading={isLoading} strokeColor="#000000" />;
+  if (!movie) return <Loader isLoading={isLoading} />;
   return (
-    <div className={css.movieDetails}>
-      <Link to={goBackUrl.current}>Go back</Link>
+    <div className={css.content}>
+      <Link className={css.goBackBtn} to={goBackUrl.current}>
+        <PiArrowCircleLeftDuotone />
+        <span>Go back</span>
+      </Link>
       <h1 className={css.movieTitle}>{title}</h1>
-      <img
-        className={css.moviePoster}
-        src={getImgUrl(poster_path, def, 'm')}
-        alt={title}
-      />
-
-      <div className={css.yearItem}>
-        Year: {new Date(release_date).getFullYear()}
+      <div className={css.movieInfo}>
+        <div className={css.posterItem}>
+          <img
+            className={css.moviePoster}
+            src={getImgUrl(poster_path, def, 'l')}
+            alt={title}
+          />
+        </div>
+        <ul className={css.infoItem}>
+          <li className={css.infoRow}>
+            <div className={css.infoTitle}>Year</div>
+            <div className={css.valueItem}>
+              {new Date(release_date).getFullYear()}
+            </div>
+          </li>
+          <li className={css.infoRow}>
+            <div className={css.infoTitle}>Genre</div>
+            <div className={css.valueItem}>
+              {genres.map(({ name }) => name).join(', ')}
+            </div>
+          </li>
+          <li className={css.infoRow}>
+            <div className={css.infoTitle}>Duration</div>
+            <div className={css.valueItem}>{runtime} min</div>
+          </li>
+        </ul>
       </div>
 
-      <ul className={css.genreList}>
-        {genres.map(({ id, name }) => {
-          return (
-            <li key={id} className={css.genreItem}>
-              {name}
-            </li>
-          );
-        })}
-      </ul>
-      <p className={css.durationItem}>Duration: {runtime} min</p>
-      <hr />
+      <hr className={css.horizontalRule} />
       <p className={css.movieOverview}>{overview}</p>
-      <hr />
+      <hr className={css.horizontalRule} />
       <MovieDetailsNavigation />
       <Outlet />
-      <Loader isLoading={isLoading} strokeColor="#000000" />
+      <Loader isLoading={isLoading} />
       {isError && <ErrorMessage />}
     </div>
   );

@@ -47,13 +47,13 @@ const HomePage = () => {
       });
   }, [page]);
   return (
-    <div>
-      {/* <h1>Home Page</h1> */}
+    <div className={css.content}>
+      <h1 className={css.homeTitle}>Trending today</h1>
       <MovieList movies={movies} state={location} />
       {!!movies.length && !isLastPage && (
         <LoadMoreBtn onLoadMore={handleLoadMore} isLoading={isLoading} />
       )}
-      <Loader isLoading={isLoading} strokeColor="#000000" />
+      <Loader isLoading={isLoading} />
       {isError && <ErrorMessage />}
     </div>
   );

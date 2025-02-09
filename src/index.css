@@ -1,4 +1,58 @@
 :root {
+  --header-menu-bg-color: #363c49;
+  --header-logo-color-1: #7e8084;
+  --header-bg-color-font: #283043;
+  --footer-bg-color: #363c49;
+  --body-color: #c6c9cf;
+  --bg-color-1: #22272B;
+  --a-color-1: #efefef;
+  --a-color-hover-1: #acadaf;
+  --color-2: #000;
+  --color-3: #474643;
+  --color-4: #fff;
+  --color-disabled: #5a668c;
+  --item-donate-bg-color-1: #26365c;
+  --telegram-bg-color: #26365c;
+  --telegram-a-color: #fff;
+  --comment-form-bg-color: #363c49;
+  --comment-author-font-color: #ba9f9f;
+  --comment-spoiler: #7b4a4a;
+  --comment-spoiler-text: #563131;
+  --main-lastseen-text-bg-color: rgba(43, 43, 43, 0.8);
+  --main-lastseen-text-font-color: #c9c9c9;
+  --main-lastseen-text-shadow: none;
+  --section-title: #64779b;
+  --section-filter-bg-color: #313847;
+  --section-filter-dropdown: #2f2f2f;
+  --section-filter-irs-bg-color: rgb(77 79 85);
+  --section-filter-irs-font-color: #bebebe;
+  --page-link-a-bg-color: #535c73;
+  --n-errors-bg-color: #31302e;
+  --profile-box-border: none;
+  --profile-box-bg-color: transparent;
+  --profile-box-2-bg-color: transparent;
+  --mylists-li-bg-color: #36414a;
+  --mylists-li-font-color: #9c9c9c;
+  --mylists-li-shadow-active: 0px 7px 10px #4e4e4e;
+  --mylists-li-border-active: 1px solid #5f5f5f;
+  --mylists-li-label-progress: #545454;
+  --mylists-li-label-color: #c6c9cf;
+  --short-default-bg-color: #6c6c6c;
+  --uas-services-li-bg-prof-color: #323232;
+  --uas-services-li-bg-color: #464748;
+  --login-popup-border-1: #383838;
+  --dlefastreplycomments: #363c49;
+  --ui-dialog: #22272B;
+  --ui-dialog-buttonpane: #363c49;
+  --franchise-border-bottom: #383838;
+  --franchise-selected-color: #74819e;
+  --franchise-selected-color-year: #74819e;
+  --s-dead-bg-color: #545454;
+  --s-dead-color: #c6c9cf;
+  --block-info-bg: #363c49;
+  --block-info-border-color: #ffbb00;
+  --active-link: #930505;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -15,11 +69,13 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  /* color: #646cff; */
+  color: var(--a-color-1);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  /* color: #535bf2; */
+  /* color: var(--a-color-hover-1); */
 }
 
 body {
@@ -63,7 +119,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    /* color: #747bff; */
   }
   button {
     background-color: #f9f9f9;

@@ -21,7 +21,9 @@ const CastList = ({ cast }) => {
               />
             )}
             <span className={css.actorName}>{name}</span>
-            <span className={css.character}>Character: {character}</span>
+            <span className={css.character}>
+              <b>Character:</b> {character}
+            </span>
           </li>
         );
       })}

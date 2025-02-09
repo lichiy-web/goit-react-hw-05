@@ -1,4 +1,22 @@
+.movieDetailsNavigation {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+}
+
 .active {
+    
+    background-color: #eb3b5a;
+    font-weight: 600;
+}
+
+.link {
+    font-size: 1.2em;
+    color: #ffffff;
+    padding: .3em .5em;
+}
+
+.link:hover {
     text-decoration: underline;
-    color: red;
+    font-weight: 600;
 }

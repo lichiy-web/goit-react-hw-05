@@ -50,7 +50,7 @@ const MovieReviews = () => {
       {!!reviews.length && !isLastPage && (
         <LoadMoreBtn onLoadMore={handleLoadMore} isLoading={isLoading} />
       )}
-      <Loader isLoading={isLoading} strokeColor="#000000" />
+      <Loader isLoading={isLoading} />
       {isError && <ErrorMessage />}
     </div>
   );

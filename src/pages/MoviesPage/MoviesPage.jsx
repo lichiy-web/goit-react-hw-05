@@ -89,19 +89,20 @@ const MoviesPage = () => {
 
   return (
     <>
-      <h1>Movies Page</h1>
       <SearchBar query={query} onSubmit={handleSubmit} />
-      <MovieList movies={movies} state={location} />
-      {!!movies.length && !isLastPage && (
-        <LoadMoreBtn onLoadMore={handleLoadMore} isLoading={isLoading} />
-      )}
-      {isEmpty && (
-        <Notification>
-          There are no matches for your search query...
-        </Notification>
-      )}
-      <Loader isLoading={isLoading} strokeColor="#000000" />
-      {isError && <ErrorMessage />}
+      <div className={css.content}>
+        <MovieList movies={movies} state={location} />
+        {!!movies.length && !isLastPage && (
+          <LoadMoreBtn onLoadMore={handleLoadMore} isLoading={isLoading} />
+        )}
+        {isEmpty && (
+          <Notification>
+            There are no matches for your search query...
+          </Notification>
+        )}
+        <Loader isLoading={isLoading} />
+        {isError && <ErrorMessage />}
+      </div>
     </>
   );
 };

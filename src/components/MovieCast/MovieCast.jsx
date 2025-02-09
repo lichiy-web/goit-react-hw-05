@@ -33,10 +33,10 @@ const MovieCast = () => {
       });
   }, [movieId]);
   return (
-    <div>
+    <div className={css.content}>
       <h2 className={css.castTitle}>Cast</h2>
       <CastList cast={castList} />
-      <Loader isLoading={isLoading} strokeColor="#000000" />
+      <Loader isLoading={isLoading} />
       {isError && <ErrorMessage />}
     </div>
   );
