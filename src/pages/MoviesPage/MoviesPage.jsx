@@ -19,15 +19,11 @@ const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(firstPage);
   const navigate = useNavigate();
-  // const [perPage, setPerPage] = useState(defaultPerPage);
   const [query, setQuery] = useState(searchParams.get('query'));
   const [isEmpty, setIsEmpty] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isLastPage, setIsLastPage] = useState(false);
-
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const [currentImageItem, setCurrentImageItem] = useState({});
 
   const updateSearchParams = (key, value) => {
     const updatedParams = new URLSearchParams(searchParams);

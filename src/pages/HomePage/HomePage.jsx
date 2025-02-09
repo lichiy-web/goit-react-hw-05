@@ -18,6 +18,7 @@ const HomePage = () => {
   const [isError, setIsError] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
   const handleLoadMore = () => {
     setIsError(false);
     setPage(prev => prev + 1);
@@ -32,8 +33,6 @@ const HomePage = () => {
         if (page === total_pages) {
           setIsLastPage(true);
         }
-        // console.log('movies =>', movies);
-
         setMovies(prev => [...prev, ...results]);
       })
       .catch(e => {
@@ -49,7 +48,7 @@ const HomePage = () => {
   }, [page]);
   return (
     <div>
-      <h1>Home Page</h1>
+      {/* <h1>Home Page</h1> */}
       <MovieList movies={movies} state={location} />
       {!!movies.length && !isLastPage && (
         <LoadMoreBtn onLoadMore={handleLoadMore} isLoading={isLoading} />

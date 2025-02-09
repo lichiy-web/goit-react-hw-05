@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getMovieReviews } from '../../services/api';
 import css from './MovieReviews.module.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import ReviewsList from '../ReviewsList/ReviewsList';
+import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 
 const firstPage = 1;
 const MovieReviews = () => {
@@ -14,6 +15,12 @@ const MovieReviews = () => {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
+  const navigate = useNavigate();
+
+  const handleLoadMore = () => {
+    setIsError(false);
+    setPage(prev => prev + 1);
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,6 +34,9 @@ const MovieReviews = () => {
       })
       .catch(e => {
         console.error(e);
+        if (e.status === 404) {
+          navigate('/404', { replace: true });
+        }
         setIsError(true);
       })
       .finally(() => {
@@ -37,6 +47,9 @@ const MovieReviews = () => {
     <div className={css.movieReviews}>
       <h2 className={css.reviewsTitle}>Movie Reviews</h2>
       <ReviewsList reviews={reviews} />
+      {!!reviews.length && !isLastPage && (
+        <LoadMoreBtn onLoadMore={handleLoadMore} isLoading={isLoading} />
+      )}
       <Loader isLoading={isLoading} strokeColor="#000000" />
       {isError && <ErrorMessage />}
     </div>

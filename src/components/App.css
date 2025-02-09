@@ -1,9 +1,11 @@
 #root {
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   display: flex;
   justify-content: center;
+  background-image: url('../assets/img/main-background.jpg');
+  background-repeat: repeat;
   /* text-align: center; */
   /* border: 1px dotted red; */
 }
@@ -13,4 +15,5 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2em;
 }
