@@ -1,5 +1,6 @@
 import axios from 'axios';
-import api_read_access_token from './api_read_access_token';
+import { api_read_access_token } from './api_access';
+// console.log(`api_read_access_token = ${api_read_access_token}`);
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 
@@ -31,8 +32,8 @@ axios.defaults.baseURL = BASE_URL;
 axios.defaults.headers.common['Authorization'] = `Bearer ${api_read_access_token}`;
 axios.defaults.headers.common['accept'] = 'application/json';
 
-export const getTredingMovies = async (query, timeWindow = 'day' /* day | week */, page = 1) => {
-    return axios.get(`trending/${timeWindow}?query=${query}?language=en-US&page=${page}`);
+export const getTrendingMovies = async (timeWindow = 'day' /* day | week */, page = 1) => {
+    return axios.get(`trending/movie/${timeWindow}?language=en-US&page=${page}`);
 }
 
 export const getMovieDetails = async (id) => {
