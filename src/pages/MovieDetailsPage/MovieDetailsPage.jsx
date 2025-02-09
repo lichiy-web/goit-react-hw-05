@@ -3,6 +3,8 @@ import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getImgUrl, getMovieDetails } from '../../services/api';
 import MovieDetailsNavigation from '../../components/MovieDetailsNavigation/MovieDetailsNavigation';
+import Loader from '../../components/Loader/Loader';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
@@ -70,6 +72,8 @@ const MovieDetailsPage = () => {
       <hr />
       <MovieDetailsNavigation />
       <Outlet />
+      <Loader isLoading={isLoading} strokeColor="#000000" />
+      {isError && <ErrorMessage />}
     </div>
   );
 };

@@ -20,12 +20,19 @@ const sizes = {
         m: "w780",
         l: "w1280",
         raw: "original",
+    },
+    profile: {
+        s: "w45",
+        m: "w185",
+        l: "h632",
+        raw: "original"
     }
 }
 
-export const getImgUrl = (imgName, type = 'poster' /* poster || backdrop */ , size = 'raw') => {
+export const getImgUrl = (imgName, type = 'poster' /* poster || backdrop | profile */, size = 'raw') => {
+    // console.log('imgUrl = '+ IMG_BASE_URL + sizes[type][size] + imgName);
     if (!sizes[type] || !sizes[type][size]) throw new Error('Incorrect image type or size.');
-    return IMG_BASE_URL + sizes[type][size] + `/${imgName}`;
+    return IMG_BASE_URL + sizes[type][size] + imgName;
 }
 
 axios.defaults.baseURL = BASE_URL;

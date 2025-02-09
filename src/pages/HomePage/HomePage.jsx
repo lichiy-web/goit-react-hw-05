@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { getTrendingMovies } from '../../services/api';
 import MovieList from '../../components/MovieList/MovieList';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import MoviesPage from '../MoviesPage/MoviesPage';
+import Loader from '../../components/Loader/Loader';
+// import MoviesPage from '../MoviesPage/MoviesPage';
 import { useLocation } from 'react-router-dom';
 
 const firstPage = 1;
@@ -41,6 +42,7 @@ const HomePage = () => {
     <div>
       <h1>Home Page</h1>
       <MovieList movies={movies} state={location} />
+      <Loader isLoading={isLoading} strokeColor="#000000" />
       {isError && <ErrorMessage />}
     </div>
   );
