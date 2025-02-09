@@ -28,7 +28,7 @@ const MovieReviews = () => {
     getMovieReviews(movieId, page)
       .then(({ data }) => {
         const { results, total_pages } = data;
-        console.log(data);
+        // console.log(data);
         if (page === total_pages) setIsLastPage(true);
         setReviews(prev => [...prev, ...results]);
       })

@@ -72,7 +72,7 @@ const MoviesPage = () => {
           setPage(firstPage);
           setQuery('');
         }
-        console.log(results, total_pages);
+        // console.log(results, total_pages);
         setMovies(prev => [...prev, ...results]);
       })
       .catch(err => {

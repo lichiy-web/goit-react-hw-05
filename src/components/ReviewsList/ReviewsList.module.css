@@ -1,0 +1,23 @@
+.reviewItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5em;
+}
+
+.authorName {
+    align-self: start;
+}
+
+.authorName{
+    color: #fc0;
+}
+
+.reviewDate {
+    font-weight: 600;
+}
+
+.horizontalRule {
+    width: 100%;
+    margin-bottom: 1em;
+}

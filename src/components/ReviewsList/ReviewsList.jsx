@@ -13,9 +13,10 @@ const ReviewsList = ({ reviews }) => {
           <li key={id} className={css.reviewItem}>
             <h3 className={css.authorName}>Author: {author}</h3>
             <p className={css.reviewContent}>{content}</p>
-            <p className="reviewDate">
+            <p className={css.reviewDate}>
               {date.getDay()}.{date.getMonth() + 1}.{date.getFullYear()}
             </p>
+            <hr className={css.horizontalRule} />
           </li>
         );
       })}

@@ -3,4 +3,5 @@
     /* height: 2em; */
     position: fixed;
     top: calc(50vh - .5em);
+    margin: auto;
 }

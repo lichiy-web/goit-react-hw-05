@@ -26,7 +26,7 @@ const MovieDetailsPage = () => {
     setIsLoading(true);
     getMovieDetails(movieId)
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         setMovie(data);
       })
       .catch(e => {
