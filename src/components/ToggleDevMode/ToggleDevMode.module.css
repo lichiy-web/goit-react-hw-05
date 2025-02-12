@@ -4,3 +4,7 @@
     top: 0;
     right: 0;
 }
+.toggleDevMode:focus,
+.toggleDevMode:active {
+    outline: 0;
+}
