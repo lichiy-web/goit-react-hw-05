@@ -59,7 +59,7 @@ const HomePage = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [page]);
+  }, [isDevMode, navigate, page]);
   return (
     <div className={css.content}>
       <h1 className={css.homeTitle}>Trending today</h1>

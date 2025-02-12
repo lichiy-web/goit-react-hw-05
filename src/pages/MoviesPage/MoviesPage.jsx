@@ -94,7 +94,7 @@ const MoviesPage = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [query, page]);
+  }, [query, page, isDevMode, navigate]);
 
   return (
     <>
