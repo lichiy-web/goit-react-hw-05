@@ -1,0 +1,6 @@
+.toggleDevMode {
+    background-color: rgba(256,256,256, .3);
+    position: absolute;
+    top: 0;
+    right: 0;
+}

@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import css from './MoviesPage.module.css';
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import { searchMovies } from '../../services/api';
@@ -10,10 +10,13 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
 import { useSearchParams } from 'react-router-dom';
 import Notification from '../../components/Notification/Notification';
+import { useModeContext } from '../../components/ToggleDevMode/ModeContext';
 
 const firstPage = 1;
 
 const MoviesPage = () => {
+  const { isDevMode } = useModeContext();
+
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const [movies, setMovies] = useState([]);
@@ -24,6 +27,7 @@ const MoviesPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isLastPage, setIsLastPage] = useState(false);
+  const isFirstMount = useRef(true);
 
   const updateSearchParams = (key, value) => {
     const updatedParams = new URLSearchParams(searchParams);
@@ -59,6 +63,11 @@ const MoviesPage = () => {
   };
 
   useEffect(() => {
+    if (isDevMode && isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+
     if (!query) return;
     setIsLoading(true);
     searchMovies(query, page)
@@ -75,8 +84,8 @@ const MoviesPage = () => {
         // console.log(results, total_pages);
         setMovies(prev => [...prev, ...results]);
       })
-      .catch(err => {
-        console.error(err);
+      .catch(e => {
+        console.error(e);
         if (e.status === '404') {
           navigate('/404', { replace: true });
         }
