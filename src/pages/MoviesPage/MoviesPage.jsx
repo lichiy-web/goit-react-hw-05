@@ -36,7 +36,6 @@ const MoviesPage = () => {
   };
 
   const handleSubmit = e => {
-    // console.log('handleSubmit is called...');
     e.preventDefault();
 
     const newQuery = e.target.elements.search.value;
@@ -81,7 +80,6 @@ const MoviesPage = () => {
           setPage(firstPage);
           setQuery('');
         }
-        // console.log(results, total_pages);
         setMovies(prev => [...prev, ...results]);
       })
       .catch(e => {
