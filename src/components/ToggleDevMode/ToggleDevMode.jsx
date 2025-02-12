@@ -1,12 +1,11 @@
-import { ModeContext } from './ModeContext';
+import ModeContext from './ModeContext';
 import css from './ToggleDevMode.module.css';
 import { StrictMode, useState } from 'react';
 
 const ToggleDevMode = ({ children }) => {
-  //   const ModeContext = useModeContext();
   console.log('ModeContext =>', ModeContext);
   const [isDevMode, setIsDevMode] = useState(
-    localStorage.getItem('isDevMode') ?? false
+    JSON.parse(localStorage.getItem('isDevMode')) ?? false
   );
   console.log('isDevMode => ', isDevMode);
   return (

@@ -14,6 +14,7 @@ const firstPage = 1;
 const HomePage = () => {
   const ModeContext = useModeContext();
   const { isDevMode } = ModeContext;
+  console.log('HomePage, root scope, isDevMode => ', isDevMode);
 
   // console.log(useEnvContext());
 
@@ -32,6 +33,7 @@ const HomePage = () => {
   };
 
   useEffect(() => {
+    console.log('HomePage, useEffect, isDevMode => ', isDevMode);
     if (isDevMode && isFirstMount.current) {
       isFirstMount.current = false;
       return;

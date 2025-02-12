@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
 
-export const ModeContext = createContext();
+const ModeContext = createContext();
+export default ModeContext;
 export const useModeContext = () => useContext(ModeContext);
